@@ -16,7 +16,14 @@ public class DbManager
     public TableClients TableClients;
     public TableBooksClients TableBooksClients;
 
-    private static DbManager GetInstance()
+    private DbManager()
+    {
+        TableBooks = new TableBooks(URL, LOGIN, PASSWORD);
+        TableClients = new TableClients(URL, LOGIN, PASSWORD);
+        TableBooksClients = new TableBooksClients(URL, LOGIN, PASSWORD);
+    }
+
+    public static DbManager GetInstance()
     {
         if(instance==null)
         {
