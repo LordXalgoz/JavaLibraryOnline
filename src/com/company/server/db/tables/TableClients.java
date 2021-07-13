@@ -35,7 +35,7 @@ public class TableClients
 
             Statement statement = connection.createStatement();
 
-            String query = String.format("SELECT * FROM library.clients WHERE login='%s' AND Password='%s'", clientLogin, clientPassword);
+            String query = String.format("SELECT * FROM library.clients WHERE login='%s' AND password='%s'", clientLogin, clientPassword);
 
             ResultSet resultSet = statement.executeQuery(query);
 

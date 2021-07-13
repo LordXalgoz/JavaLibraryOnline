@@ -16,7 +16,7 @@ public class ApiWorker {
     private int port;
 
     private Response SendRequestReceiveResponse(Request request) throws Exception {
-        URL url = new URL(String.format("http://127.0.0.1/%d/api", port));
+        URL url = new URL(String.format("http://127.0.0.1:%d/api", port));
         HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
 
         httpConnection.setDoOutput(true);
@@ -56,6 +56,25 @@ public class ApiWorker {
             return response;
 
         }catch (Exception e){
+            throw e;
+        }
+    }
+
+    public Response BooksGetAllForClient(int idClient) throws Exception
+    {
+        try{
+            String command = "Books.GetAllForClient";
+            String parameters = Integer.toString(idClient);
+            String apiKey = General.API_KEY;
+
+            Request request = new Request(command, parameters, apiKey);
+
+            Response response = SendRequestReceiveResponse(request);
+
+            return response;
+        }
+        catch (Exception e)
+        {
             throw e;
         }
     }

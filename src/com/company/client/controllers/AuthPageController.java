@@ -58,6 +58,7 @@ public class AuthPageController {
 
                     ShowDialog("Успешная авторизация для "+clientFromServer.FirstName);
 
+                    Main.GoToPage(Main.WORK_PAGE);
                     break;
                 case Response.STATUS_ERROR:
                     ShowDialog("Ошибка сервера: " + response.Message);

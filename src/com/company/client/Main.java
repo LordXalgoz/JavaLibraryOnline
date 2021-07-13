@@ -33,7 +33,7 @@ public class Main extends Application {
 
         GoToPage(AUTH_PAGE);
 
-        primaryStage.setTitle("Сбербанк онлайн (копия)");
+        primaryStage.setTitle("Библиотека Онлайн ЕЕЕЕЕЕ");
         primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
     }
