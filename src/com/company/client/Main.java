@@ -36,7 +36,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
     }
-
+    /////////////////
     public static void GoToPage(int page) throws IOException {
         root.getChildren().clear();
         if (loaders.get(page).getRoot() == null) {
