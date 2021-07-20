@@ -60,10 +60,29 @@ public class ApiWorker {
         }
     }
 
-    public Response BooksGetAllForClient(int idClient) throws Exception
+    public Response BooksGetAllBooksForClient(int idClient) throws Exception
     {
         try{
-            String command = "Books.GetAllForClient";
+            String command = "Books.GetAllBooksForClient";
+            String parameters = Integer.toString(idClient);
+            String apiKey = General.API_KEY;
+
+            Request request = new Request(command, parameters, apiKey);
+
+            Response response = SendRequestReceiveResponse(request);
+
+            return response;
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    public Response BooksGetAllBooksFromLibrary(int idClient) throws Exception
+    {
+        try{
+            String command = "Books.GetAllBooksFromLibrary";
             String parameters = Integer.toString(idClient);
             String apiKey = General.API_KEY;
 

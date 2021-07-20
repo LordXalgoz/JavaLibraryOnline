@@ -1,5 +1,6 @@
 package com.company.client.controllers;
 
+import com.company.client.Main;
 import com.company.client.api.ApiWorker;
 import com.company.common.communication.General;
 import com.company.common.communication.Response;
@@ -56,7 +57,7 @@ public class WorkPageController {
 
     private void LoadClientBooks() {
         try {
-            Response response = apiWorker.BooksGetAllForClient(client.Id);
+            Response response = apiWorker.BooksGetAllBooksForClient(client.Id);
 
             switch (response.Status) {
                 case Response.STATUS_OK:
@@ -78,5 +79,30 @@ public class WorkPageController {
 
     public void buttonLoadBooksClick(MouseEvent mouseEvent) {
         LoadClientBooks();
+    }
+
+    public void buttonGoToStorageClick(MouseEvent mouseEvent) {
+        try {
+        Main.GoToPage(Main.STORAGE_PAGE);
+
+    } catch (Exception e) {
+        ShowDialog("Ошибка отправки на сервер: " + e.toString());
+    }
+        /*try {
+            Response response = ;
+
+            switch (response.Status){
+                case Response.STATUS_OK:
+                    Main.GoToPage(Main.STORAGE_PAGE);
+                    break;
+                case Response.STATUS_ERROR:
+                    ShowDialog("Ошибка сервера: " + response.Message);
+                    break;
+            }
+
+        } catch (Exception e) {
+            ShowDialog("Ошибка отправки на сервер: " + e.toString());
+        }*/
+
     }
 }

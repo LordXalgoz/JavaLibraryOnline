@@ -2,14 +2,11 @@ package com.company.client;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class Main extends Application {
@@ -19,6 +16,7 @@ public class Main extends Application {
 
     public static final int AUTH_PAGE = 0;
     public static final int WORK_PAGE = 1;
+    public static final int STORAGE_PAGE = 2;
 
     public static void main(String[] args) {
         launch(args);
@@ -30,6 +28,7 @@ public class Main extends Application {
 
         loaders.add(new FXMLLoader(getClass().getResource("views/AuthPage.fxml")));
         loaders.add(new FXMLLoader(getClass().getResource("views/WorkPage.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("views/StoragePage.fxml")));
 
         GoToPage(AUTH_PAGE);
 

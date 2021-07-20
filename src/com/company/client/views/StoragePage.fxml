@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.client.controllers.StoragePageController">
+    <children>
+        <Button layoutX="39.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#buttonBackToClientClick" text="Вернуться" />
+        <Label layoutX="39.0" layoutY="85.0" text="Список книг: " />
+        <ListView fx:id="listViewCurrentBooks" layoutX="39.0" layoutY="113.0" prefHeight="200.0" prefWidth="449.0" />
+        <Button layoutX="39.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#buttonAddBookClick" text="Добавить книгу" />
+        <Button layoutX="177.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#buttonLoadBookClick" text="Перезагрузить библиотеку" />
+    </children>
+</Pane>

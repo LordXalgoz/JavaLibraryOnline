@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class BooksController
 {
-    public static Response GetAllForClient(String parameters) throws Exception {
+    public static Response GetAllBooksForClient(String parameters) throws Exception {
         try {
             int idClient = Integer.parseInt(parameters);
 
@@ -20,6 +20,44 @@ public class BooksController
 
             String status = Response.STATUS_OK;
             String message = new Gson().toJson(books);
+
+            return new Response(status, message);
+        } catch (Exception e) {
+            DataStorage.Add("my_exception", e.getMessage());
+            throw e;
+        }
+    }
+
+    public static Response GetAllBooksFromLibrary(String parameters) throws Exception {
+        try {
+            int idClient = Integer.parseInt(parameters);
+
+            DbManager db = DbManager.GetInstance();
+
+            ArrayList<Book> books = db.TableBooks.GetBooksNotInClientsBooks(idClient);
+
+            String status = Response.STATUS_OK;
+            String message = new Gson().toJson(books);
+
+            return new Response(status, message);
+        } catch (Exception e) {
+            DataStorage.Add("my_exception", e.getMessage());
+            throw e;
+        }
+    }
+
+    public static Response AddNewCardForClient(String parameters) throws Exception {
+        try {
+            int idClient = Integer.parseInt(parameters);
+
+            DbManager db = DbManager.GetInstance();
+
+            int idBook = db.TableCards.GetLastInsertedCardId();
+
+            db.TableCardsClients.InsertNewCardForClient(idClient, idBook);
+
+            String status = Response.STATUS_OK;
+            String message = "";
 
             return new Response(status, message);
         } catch (Exception e) {

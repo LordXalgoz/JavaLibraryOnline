@@ -5,9 +5,10 @@
 
 <Pane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.client.controllers.WorkPageController">
     <children>
-        <Label fx:id="labelFIO" layoutX="39.0" layoutY="41.0" text="Имя Фамилия" />
-        <Label layoutX="39.0" layoutY="85.0" text="Список ваших книг: " />
-        <ListView fx:id="listViewClientsBooks" layoutX="39.0" layoutY="113.0" prefHeight="200.0" prefWidth="449.0" />
-        <Button layoutX="39.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#buttonLoadBooksClick" text="Перезагрузить список книг" />
+      <Label fx:id="labelFIO" layoutX="39.0" layoutY="41.0" text="Имя Фамилия" />
+      <Label layoutX="39.0" layoutY="85.0" text="Список ваших книг: " />
+      <ListView fx:id="listViewClientsBooks" layoutX="39.0" layoutY="113.0" prefHeight="200.0" prefWidth="449.0" />
+      <Button layoutX="39.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#buttonLoadBooksClick" text="Перезагрузить список книг" />
+      <Button layoutX="409.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#buttonGoToStorageClick" text="В библиотеку" />
     </children>
 </Pane>
