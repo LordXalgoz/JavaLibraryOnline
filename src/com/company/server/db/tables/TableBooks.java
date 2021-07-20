@@ -95,8 +95,9 @@ public class TableBooks {
         } catch (Exception e) {
             throw e;
         }
+    }
 
-        public int GetBookById(int idBook) throws Exception
+        public int GetBookById() throws Exception
         {
             try {
                 Class.forName("org.postgresql.Driver");
@@ -125,4 +126,4 @@ public class TableBooks {
             }
         }
     }
-}
+

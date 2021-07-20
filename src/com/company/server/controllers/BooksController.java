@@ -46,7 +46,9 @@ public class BooksController
         }
     }
 
-    public static Response AddNewCardForClient(String parameters) throws Exception {
+
+/*
+    public static Response AddNewBookForClient(String parameters) throws Exception {
         try {
             int idClient = Integer.parseInt(parameters);
 
@@ -54,7 +56,7 @@ public class BooksController
 
             int idBook = db.TableBooks.GetLastInserted;
 
-            db.TableCardsClients.InsertNewBookForClient(idClient, idBook);
+            db.TableBooksClients.InsertNewBookForClient(idClient, idBook);
 
             String status = Response.STATUS_OK;
             String message = "";
@@ -65,4 +67,6 @@ public class BooksController
             throw e;
         }
     }
+    */
+
 }

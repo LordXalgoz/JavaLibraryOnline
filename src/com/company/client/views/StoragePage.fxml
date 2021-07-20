@@ -5,10 +5,14 @@
 
 <Pane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.client.controllers.StoragePageController">
     <children>
-        <Button layoutX="39.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#buttonBackToClientClick" text="Вернуться" />
-        <Label layoutX="39.0" layoutY="85.0" text="Список книг: " />
-        <ListView fx:id="listViewCurrentBooks" layoutX="39.0" layoutY="113.0" prefHeight="200.0" prefWidth="449.0" />
-        <Button layoutX="39.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#buttonAddBookClick" text="Добавить книгу" />
-        <Button layoutX="177.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#buttonLoadBookClick" text="Перезагрузить библиотеку" />
+      <Button layoutX="39.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#buttonBackToClientClick" text="Вернуться" />
+      <Label layoutX="39.0" layoutY="85.0" text="Список книг: " />
+      <ListView fx:id="listViewCurrentBooks" layoutX="39.0" layoutY="113.0" prefHeight="200.0" prefWidth="449.0" />
+      <Button layoutX="39.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#buttonAddBookClick" text="Добавить книгу" />
+      <Button layoutX="177.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#buttonLoadBookClick" text="Перезагрузить библиотеку" />
+      <Label layoutX="39.0" layoutY="381.0" text="Название книги" />
+      <TextField fx:id="textFieldBookName" layoutX="39.0" layoutY="398.0" />
+      <Label layoutX="38.0" layoutY="430.0" text="Автор книги" />
+      <TextField fx:id="textFieldBookAuthor" layoutX="38.0" layoutY="447.0" />
     </children>
 </Pane>

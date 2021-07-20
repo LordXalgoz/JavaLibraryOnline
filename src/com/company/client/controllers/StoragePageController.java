@@ -9,11 +9,14 @@ import com.company.common.entities.Book;
 import com.company.common.entities.Client;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.lang.reflect.Type;
@@ -30,12 +33,35 @@ public class StoragePageController
     ArrayList<Book> books;
 
     @FXML
+    TextField textFieldBookName;
+
+    @FXML
+    TextField textFieldBookAuthor;
+
+    @FXML
     public void initialize() {
         apiWorker = new ApiWorker(General.SERVER_PORT);
         client = (Client) DataStorage.Get("current_client");
 
         LoadCurrentBooks();
+
+        listViewCurrentBooks.getSelectionModel().selectedItemProperty().addListener(listViewCurrentsBooksSelectedItemListener);
     }
+
+    ChangeListener<String> listViewCurrentsBooksSelectedItemListener = new ChangeListener<String>(){
+        public void changed(ObservableValue<? extends String> changed, String oldValue, String newValue){
+            try {
+                int index = listViewCurrentBooks.getSelectionModel().getSelectedIndex();
+                Book selectedBook = books.get(index);
+                textFieldBookName.setText(selectedBook.Name);
+                textFieldBookAuthor.setText(selectedBook.Author);
+            }
+            catch (Exception e)
+            {
+                return;
+            }
+        }
+    };
 
     private ObservableList<String> CurrentBooksToStrings() {
         ObservableList<String> strings = FXCollections.observableArrayList();
