@@ -52,9 +52,9 @@ public class BooksController
 
             DbManager db = DbManager.GetInstance();
 
-            int idBook = db.TableCards.GetLastInsertedCardId();
+            int idBook = db.TableBooks.GetLastInserted;
 
-            db.TableCardsClients.InsertNewCardForClient(idClient, idBook);
+            db.TableCardsClients.InsertNewBookForClient(idClient, idBook);
 
             String status = Response.STATUS_OK;
             String message = "";
