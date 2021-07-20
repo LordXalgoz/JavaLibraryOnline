@@ -2,6 +2,7 @@ package com.company.server.controllers;
 
 import com.company.common.communication.Response;
 import com.company.common.datatools.DataStorage;
+import com.company.common.dto.TakeBookDto;
 import com.company.common.entities.Book;
 import com.company.server.db.DbManager;
 import com.google.gson.Gson;
@@ -28,13 +29,12 @@ public class BooksController
         }
     }
 
-    public static Response GetAllBooksFromLibrary(String parameters) throws Exception {
+    public static Response GetAllFreeBooksFromLibrary(String parameters) throws Exception {
         try {
-            int idClient = Integer.parseInt(parameters);
 
             DbManager db = DbManager.GetInstance();
 
-            ArrayList<Book> books = db.TableBooks.GetBooksNotInClientsBooks(idClient);
+            ArrayList<Book> books = db.TableBooks.GetBooksNotInClientsBooks();
 
             String status = Response.STATUS_OK;
             String message = new Gson().toJson(books);
@@ -47,16 +47,14 @@ public class BooksController
     }
 
 
-/*
+
     public static Response AddNewBookForClient(String parameters) throws Exception {
         try {
-            int idClient = Integer.parseInt(parameters);
+            TakeBookDto takeBookDto = new Gson().fromJson(parameters, TakeBookDto.class);
 
             DbManager db = DbManager.GetInstance();
 
-            int idBook = db.TableBooks.GetLastInserted;
-
-            db.TableBooksClients.InsertNewBookForClient(idClient, idBook);
+            db.TableBooksClients.InsertNewBookForClient(takeBookDto.IdClient, takeBookDto.IdBook);
 
             String status = Response.STATUS_OK;
             String message = "";
@@ -67,6 +65,6 @@ public class BooksController
             throw e;
         }
     }
-    */
+
 
 }

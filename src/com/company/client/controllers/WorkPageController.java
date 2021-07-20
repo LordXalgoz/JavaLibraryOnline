@@ -81,28 +81,9 @@ public class WorkPageController {
         LoadClientBooks();
     }
 
-    public void buttonGoToStorageClick(MouseEvent mouseEvent) {
-        try {
+    public void buttonGoToStorageClick(MouseEvent mouseEvent) throws Exception{
+
         Main.GoToPage(Main.STORAGE_PAGE);
-
-    } catch (Exception e) {
-        ShowDialog("Ошибка отправки на сервер: " + e.toString());
-    }
-        /*try {
-            Response response = ;
-
-            switch (response.Status){
-                case Response.STATUS_OK:
-                    Main.GoToPage(Main.STORAGE_PAGE);
-                    break;
-                case Response.STATUS_ERROR:
-                    ShowDialog("Ошибка сервера: " + response.Message);
-                    break;
-            }
-
-        } catch (Exception e) {
-            ShowDialog("Ошибка отправки на сервер: " + e.toString());
-        }*/
 
     }
 }

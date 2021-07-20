@@ -4,6 +4,7 @@ import com.company.common.communication.General;
 import com.company.common.communication.Request;
 import com.company.common.communication.Response;
 import com.company.common.dto.AuthClientDto;
+import com.company.common.dto.TakeBookDto;
 import com.google.gson.Gson;
 
 import java.io.InputStream;
@@ -79,11 +80,30 @@ public class ApiWorker {
         }
     }
 
-    public Response BooksGetAllBooksFromLibrary(int idClient) throws Exception
+    public Response BooksGetAllFreeBooksFromLibrary() throws Exception
     {
         try{
-            String command = "Books.GetAllBooksFromLibrary";
-            String parameters = Integer.toString(idClient);
+            String command = "Books.GetAllFreeBooksFromLibrary";
+            String parameters = "";
+            String apiKey = General.API_KEY;
+
+            Request request = new Request(command, parameters, apiKey);
+
+            Response response = SendRequestReceiveResponse(request);
+
+            return response;
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    public Response BooksAddNewBookForClient(TakeBookDto takeBookDto) throws Exception
+    {
+        try{
+            String command = "Books.AddNewBookForClient";
+            String parameters = new Gson().toJson(takeBookDto);
             String apiKey = General.API_KEY;
 
             Request request = new Request(command, parameters, apiKey);

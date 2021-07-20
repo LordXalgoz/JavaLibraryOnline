@@ -55,10 +55,6 @@ public class TableClients
                 );
             }
 
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString(1) + " " + resultSet.getString(2));
-            }
-
             connection.close();
 
             return client;

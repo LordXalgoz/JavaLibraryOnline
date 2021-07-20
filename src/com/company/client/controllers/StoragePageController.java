@@ -5,6 +5,9 @@ import com.company.client.api.ApiWorker;
 import com.company.common.communication.General;
 import com.company.common.communication.Response;
 import com.company.common.datatools.DataStorage;
+import com.company.common.dto.AuthClientDto;
+import com.company.common.dto.TakeBookDto;
+import com.company.common.dto.WorkClientDto;
 import com.company.common.entities.Book;
 import com.company.common.entities.Client;
 import com.google.gson.Gson;
@@ -31,6 +34,7 @@ public class StoragePageController
     Client client;
 
     ArrayList<Book> books;
+    Book selectedBook;
 
     @FXML
     TextField textFieldBookName;
@@ -52,7 +56,7 @@ public class StoragePageController
         public void changed(ObservableValue<? extends String> changed, String oldValue, String newValue){
             try {
                 int index = listViewCurrentBooks.getSelectionModel().getSelectedIndex();
-                Book selectedBook = books.get(index);
+                selectedBook = books.get(index);
                 textFieldBookName.setText(selectedBook.Name);
                 textFieldBookAuthor.setText(selectedBook.Author);
             }
@@ -76,7 +80,7 @@ public class StoragePageController
 
     private void LoadCurrentBooks() {
         try {
-            Response response = apiWorker.BooksGetAllBooksFromLibrary(client.Id);
+            Response response = apiWorker.BooksGetAllFreeBooksFromLibrary();
 
             switch (response.Status) {
                 case Response.STATUS_OK:
@@ -100,19 +104,32 @@ public class StoragePageController
         new Alert(Alert.AlertType.CONFIRMATION, message).showAndWait();
     }
 
-    public void buttonBackToClientClick(MouseEvent mouseEvent)
+    public void buttonBackToClientClick(MouseEvent mouseEvent) throws Exception
     {
-        try {
-            Main.GoToPage(Main.WORK_PAGE);
+        Main.GoToPage(Main.WORK_PAGE);
 
-        } catch (Exception e) {
-            ShowDialog("Ошибка отправки на сервер: " + e.toString());
-        }
     }
 
     public void buttonAddBookClick(MouseEvent mouseEvent)
     {
+        TakeBookDto takeBookDto = new TakeBookDto(client.Id, selectedBook.Id);
 
+        try {
+            Response response = apiWorker.BooksAddNewBookForClient(takeBookDto);
+
+            switch (response.Status){
+                case Response.STATUS_OK:
+                    LoadCurrentBooks();
+                    ShowDialog("Успешна взята книга");
+                    break;
+                case Response.STATUS_ERROR:
+                    ShowDialog("Ошибка сервера: " + response.Message);
+                    break;
+            }
+
+        } catch (Exception e) {
+            ShowDialog("Ошибка отправки на сервер: " + e.toString());
+        }
     }
 
     public void buttonLoadBookClick(MouseEvent mouseEvent)

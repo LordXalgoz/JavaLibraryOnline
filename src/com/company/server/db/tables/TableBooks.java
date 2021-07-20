@@ -57,7 +57,7 @@ public class TableBooks {
         }
     }
 
-    public ArrayList<Book> GetBooksNotInClientsBooks(int idClient) throws Exception
+    public ArrayList<Book> GetBooksNotInClientsBooks() throws Exception
     {
         try {
             Class.forName("org.postgresql.Driver");
@@ -71,7 +71,7 @@ public class TableBooks {
 
             Statement statement = connection.createStatement();
 
-            String query = String.format("SELECT * FROM library.books WHERE id NOT IN(SELECT idbook FROM library.clientsbooks)", idClient);
+            String query = String.format("SELECT * FROM library.books WHERE id NOT IN(SELECT idbook FROM library.clientsbooks)");
 
             ResultSet resultSet = statement.executeQuery(query);
 
