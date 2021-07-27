@@ -120,6 +120,8 @@ public class StoragePageController
             switch (response.Status){
                 case Response.STATUS_OK:
                     LoadCurrentBooks();
+                    textFieldBookName.clear();
+                    textFieldBookAuthor.clear();
                     ShowDialog("Успешна взята книга");
                     break;
                 case Response.STATUS_ERROR:

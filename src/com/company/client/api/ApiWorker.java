@@ -117,4 +117,23 @@ public class ApiWorker {
             throw e;
         }
     }
+
+    public Response BooksReturnBookToLibrary(TakeBookDto takeBookDto) throws Exception
+    {
+        try{
+            String command = "Books.ReturnBookToLibrary";
+            String parameters = new Gson().toJson(takeBookDto);
+            String apiKey = General.API_KEY;
+
+            Request request = new Request(command, parameters, apiKey);
+
+            Response response = SendRequestReceiveResponse(request);
+
+            return response;
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
 }

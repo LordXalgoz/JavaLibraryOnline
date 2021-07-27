@@ -40,4 +40,28 @@ public class TableBooksClients
             throw e;
         }
     }
+
+    public void DeleteBookFromClient(int idClient, int idBook) throws Exception
+    {
+        try {
+            Class.forName("org.postgresql.Driver");
+
+            Properties props = new Properties();
+            props.setProperty("user", login);
+            props.setProperty("password", password);
+            props.setProperty("ssl", "false");
+
+            Connection connection = DriverManager.getConnection(url, props);
+
+            Statement statement = connection.createStatement();
+
+            String query = String.format("DELETE FROM library.clientsbooks WHERE idclient=%d AND idbook=%d", idClient, idBook);
+
+            statement.executeUpdate(query);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
 }

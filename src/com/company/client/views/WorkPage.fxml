@@ -10,5 +10,10 @@
       <ListView fx:id="listViewClientsBooks" layoutX="39.0" layoutY="113.0" prefHeight="200.0" prefWidth="449.0" />
       <Button layoutX="39.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#buttonLoadBooksClick" text="Перезагрузить список книг" />
       <Button layoutX="409.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#buttonGoToStorageClick" text="В библиотеку" />
+      <Label layoutX="234.0" layoutY="382.0" text="Название книги" />
+      <Label layoutX="234.0" layoutY="455.0" text="Автор книги" />
+      <TextField fx:id="textFieldClientBookName" layoutX="234.0" layoutY="411.0" />
+      <TextField fx:id="textFieldClientBookAuthor" layoutX="234.0" layoutY="481.0" />
+      <Button layoutX="234.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#buttonReturnBookToLibrary" text="Вернуть книгу" />
     </children>
 </Pane>

@@ -46,8 +46,6 @@ public class BooksController
         }
     }
 
-
-
     public static Response AddNewBookForClient(String parameters) throws Exception {
         try {
             TakeBookDto takeBookDto = new Gson().fromJson(parameters, TakeBookDto.class);
@@ -66,5 +64,22 @@ public class BooksController
         }
     }
 
+    public static Response ReturnBookToLibrary(String parameters) throws Exception {
+        try {
+            TakeBookDto takeBookDto = new Gson().fromJson(parameters, TakeBookDto.class);
+
+            DbManager db = DbManager.GetInstance();
+
+            db.TableBooksClients.DeleteBookFromClient(takeBookDto.IdClient, takeBookDto.IdBook);
+
+            String status = Response.STATUS_OK;
+            String message = "";
+
+            return new Response(status, message);
+        } catch (Exception e) {
+            DataStorage.Add("my_exception", e.getMessage());
+            throw e;
+        }
+    }
 
 }
